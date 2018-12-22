@@ -1,5 +1,8 @@
 #BUSINESS UNDERSTANDING -----
 
+# Setting up working directory if you are running docker container 
+setwd('/home/guest/HR_Employee_Attrition_Project-master/')
+
 # Loading libraries
 library(stats)
 library(tidyverse)
