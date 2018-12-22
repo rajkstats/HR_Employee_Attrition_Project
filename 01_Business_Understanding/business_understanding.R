@@ -194,23 +194,6 @@ dept_job_role_tbl %>%
 
 # Workflow of Attrition ----
 
-dept_job_role_tbl %>% 
-  
-  count(Department, JobRole, Attrition) %>% 
-  
-  count_to_pct(Department, JobRole)%>%
-  
-  filter(Attrition %in% "Yes" ) %>%
-  arrange(desc(pct)) %>%
-  mutate (
-    above_industry_avg =  case_when(
-      pct> 0.088 ~ "Yes" ,
-      TRUE ~ "No"
-    )
-  ) %>% 
-  
-  mutate(cost_of_attrition= calculate_attrition_cost(n=n,80000))
-
 #Info: Tidy Eval is a programming language built into dplyr and the tidyverse packages
 # ... : enable passing multiple, un-named arguments to a function 
 # Because dots are not pre-selected , user can flexibly add variables and function will adapt ! 
@@ -233,6 +216,25 @@ count_to_pct <-  function(data,...,col=n){
     return(ret)
 }
 
+
+
+
+dept_job_role_tbl %>% 
+  
+  count(Department, JobRole, Attrition) %>% 
+  
+  count_to_pct(Department, JobRole)%>%
+  
+  filter(Attrition %in% "Yes" ) %>%
+  arrange(desc(pct)) %>%
+  mutate (
+    above_industry_avg =  case_when(
+      pct> 0.088 ~ "Yes" ,
+      TRUE ~ "No"
+    )
+  ) %>% 
+  
+  mutate(cost_of_attrition= calculate_attrition_cost(n=n,80000))
 
 
 dept_job_role_tbl %>% 
