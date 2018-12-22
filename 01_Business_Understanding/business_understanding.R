@@ -1,6 +1,7 @@
 #BUSINESS UNDERSTANDING -----
 
 # Loading libraries
+library(stats)
 library(tidyverse)
 library(tidyquant)
 library(readxl)
